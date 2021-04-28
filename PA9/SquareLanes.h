@@ -9,6 +9,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <string>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
@@ -18,23 +19,38 @@
 class SquareLanes
 {
 public:
+    // Constructor
+    SquareLanes();
+
     // Getters
     sf::Sprite& getBackground(void);
+    sf::Text& getScore(void);
     std::vector<sf::RectangleShape>& getLanes(void);
     Player& getPlayer(void);
 
     void loadMusic(void);
 
+    void loadFont(void);
+
     void loadLanes(void);
 
     void loadBackground(void);
+
+    void loadScore(void);
 private:
     Player player;
     sf::Texture backgroundTexture;
     sf::Sprite background;
+    sf::Font fontRaleway; // The font to be used when playing
     std::vector<sf::RectangleShape> lanes; // The dividing lines
-    sf::Text spaceToPlay;
     sf::Music music;
+    sf::Text score;
+    int numCoins; // Number of coins on the screen
+    int numSpikes; // Max of 3 spikes on screen
+    int numScore; // Total score the user has in the game
+    double gameSpeed; // How fast the spawns are moving down (all spawns have the same speed)
+    double spawnSpeed; // How frequently spawns spawn. Is correlated to gameSpeed
+    std::string laneSpawns[4]; // The spawn at each of the 4 lanes
 
     /*
         Function: makeLane()
@@ -49,4 +65,6 @@ private:
         Postconditions: The divider for a lane is created.
     */
     void makeLane(sf::RectangleShape& line, float xPosition);
+
+    void chooseSpawns(void);
 };

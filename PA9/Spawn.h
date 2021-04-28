@@ -8,17 +8,13 @@
 
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
-#include "Spawn.h"
-
-class Spike : public Spawn, public sf::CircleShape // Multiple inheritance
+class Spawn
 {
 public:
     // Constructor
-    Spike() : Spawn(), sf::CircleShape(200.f, 3)
-    {
-        setFillColor(sf::Color::Red);
-    }
+    Spawn();
 private:
+    int spawnLane; // The lane in which the spawn appears
+    double spawnChance; // A percentage
+    double speed; // How fast it moves down the screen
 };

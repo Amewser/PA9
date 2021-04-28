@@ -6,5 +6,13 @@
     Description: Square Lanes
 */
 
-#include "Spike.h"
+#pragma once
 
+// MUST implement at least 5 test cases
+class Test
+{
+public:
+
+private:
+
+};
